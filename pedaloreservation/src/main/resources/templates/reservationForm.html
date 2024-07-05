@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <link rel="stylesheet" th:href="@{/reservationFormStyles.css}" type="text/css">
+  <title>Pedalo Reservation</title>
+</head>
+<body>
+<div class="createReservation">
+  <h1>Pedalo Reservation</h1>
+  <form th:object="${reservation}" method="post" class="createReservation" action="/createReservation">
+    <label for="date">Date:</label>
+    <input type="date" id="date" th:field="*{date}" required/><br/>
+
+    <label for="startTime">Start Time:</label>
+    <input type="time" id="startTime" th:field="*{startTime}" required/><br/>
+
+    <label for="duration">Duration:</label>
+    <select id="duration" th:field="*{duration}">
+      <option value="2">2 hours</option>
+      <option value="4">4 hours</option>
+      <option value="6">6 hours</option>
+    </select><br/>
+
+    <label for="pedalSize">Pedalo Size:</label>
+    <select id="pedalSize" th:field="*{pedalSize}">
+      <option value="4">4 seats</option>
+      <option value="6">6 seats</option>
+    </select><br/>
+
+    <button type="submit" >Reserve</button>
+  </form>
+</div>
+<div class="existingReservations">
+  <h2>Existing Reservations</h2>
+  <div class="reservationsContainer">
+    <div th:if="${#lists.isEmpty(reservations)}" class="noReservationsAvailable">
+      <p>No reservations available.</p>
+      <img th:src="@{/are-you-comedy-me.gif}">
+    </div>
+    <div th:unless="${#lists.isEmpty(reservations)}" class="reservationBoxContainer">
+      <div th:each="reservation, iterStat : ${reservations}" class="reservationBox">
+        <p><strong>Date:</strong> <span th:text="${reservation.date}"></span></p>
+        <p><strong>Start Time:</strong> <span th:text="${reservation.startTime}"></span></p>
+        <p><strong>Duration:</strong> <span th:text="${reservation.duration}"></span></p>
+        <p><strong>Pedal Size:</strong> <span th:text="${reservation.pedalSize}"></span></p>
+        <form method="post" action="/deleteReservation" class="deleteReservation">
+          <input type="hidden" name="objectId" th:value="${reservation.id}">
+          <button type="submit" name="delete" value="delete">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+.createReservation, .existingReservations {
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.createReservation form {
+    display: flex;
+    flex-direction: column;
+}
+
+.createReservation label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.createReservation input, .createReservation select, .createReservation button {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.createReservation button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.createReservation button:hover {
+    background-color: #45a049;
+}
+
+.existingReservations .reservationsContainer {
+    margin-top: 20px;
+}
+
+.existingReservations .reservationBox {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+}
+
+.existingReservations .reservationBox p {
+    margin: 5px 0;
+}
+
+.existingReservations .deleteReservation {
+    margin-top: 10px;
+}
+
+.existingReservations .deleteReservation button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.existingReservations .deleteReservation button:hover {
+    background-color: #e53935;
+}
+
+.noReservationsAvailable {
+    text-align: center;
+}
